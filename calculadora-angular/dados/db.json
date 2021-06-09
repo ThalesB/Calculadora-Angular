@@ -1,0 +1,11 @@
+{
+  "operacoes": [
+    {
+      "operacao": "Soma",
+      "valor1": 30,
+      "valor2": 40,
+      "resultado": 70,
+      "id": 1
+    }
+  ]
+}

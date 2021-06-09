@@ -1,16 +1,16 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject } from '@angular/core/testing';
-import { CalculadoraServiceService } from './calculadora-service.service';
+import { CalculadoraService } from './calculadora.service';
 
 describe('Service: CalculadoraService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [CalculadoraServiceService]
+      providers: [CalculadoraService]
     });
   });
 
-  it('should ...', inject([CalculadoraServiceService], (service: CalculadoraServiceService) => {
+  it('should ...', inject([CalculadoraService], (service: CalculadoraService) => {
     expect(service).toBeTruthy();
   }));
 });

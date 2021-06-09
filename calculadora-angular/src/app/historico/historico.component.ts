@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CalculadoraServiceService } from '../service/calculadora-service.service';
+import { Operacao } from '../model/operacao.model';
+import { CalculadoraService} from '../service/calculadora.service';
 
 @Component({
   selector: 'app-historico',
@@ -10,10 +11,13 @@ export class HistoricoComponent implements OnInit {
 
     transferencias: any[];
 
-  constructor(private service: CalculadoraServiceService) { }
+  constructor(private service: CalculadoraService) { }
 
   ngOnInit() {
-    this.transferencias = this.service.transferencias;
+    this.service.getTodas().subscribe((operacao: Operacao[]) =>{
+      this.transferencias = operacao;
+    })
+
   }
 
 }

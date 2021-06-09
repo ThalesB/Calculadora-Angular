@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CalculadoraServiceService } from './service/calculadora-service.service';
+import { CalculadoraService } from './service/calculadora.service';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +9,6 @@ import { CalculadoraServiceService } from './service/calculadora-service.service
 export class AppComponent {
   title = 'calculadora';
 
-constructor(private service: CalculadoraServiceService){}
+constructor(){}
 
-public transferencias($event){
-
-  const transferencia = {...$event};
-
-  this.service.adicionar(transferencia);
-
-}
 }

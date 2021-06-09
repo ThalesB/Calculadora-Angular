@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Operacao } from '../model/operacao.model';
+import { CalculadoraService } from '../service/calculadora.service';
 
 @Component({
   selector: 'app-calculadora',
@@ -6,8 +8,6 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./calculadora.component.scss']
 })
 export class CalculadoraComponent implements OnInit {
-
-  constructor() { }
 
   @Output() aoTransferir = new EventEmitter<any>();
 
@@ -18,41 +18,55 @@ export class CalculadoraComponent implements OnInit {
 
   public listaOperacao = {soma:null, subtracao: null, multiplicacao: null, divisao: null}
 
+  getID: any[];
+
+ constructor(private service: CalculadoraService){
+
+}
+
 
   ngOnInit() {
+    this.service.getTodas().subscribe((operacao: Operacao[]) =>{
+      this.getID = operacao.map(operacao => operacao.id);
+    })
   }
 
   public transferir(): void{
 
     if(this.listaOperacao.soma === 'soma'){
-       const operacao = {valor1: this.valor1, valor2: this.valor2, operacao: 'Soma', resultado: this.valorOperacao}
-       this.aoTransferir.emit(operacao);
-       this.limparListaOperacao();
-       this.limparCampos();
+       const operacao: Operacao = { operacao: 'Soma', valor1: this.valor1, valor2: this.valor2, resultado: this.valorOperacao}
+       this.service.adicionar(operacao).subscribe((resultado) =>{
+        this.limparListaOperacao();
+        this.limparCampos();
+       }, (error) => console.log(error));
+
        return;
       }
 
     if(this.listaOperacao.subtracao === 'subtracao'){
-      const operacao = {valor1: this.valor1, valor2: this.valor2, operacao: 'Subtração', resultado: this.valorOperacao}
-       this.aoTransferir.emit(operacao);
-      this.limparListaOperacao();
-      this.limparCampos();
+      const operacao: Operacao = { operacao: 'Soma', valor1: this.valor1, valor2: this.valor2, resultado: this.valorOperacao}
+      this.service.adicionar(operacao).subscribe((resultado) =>{
+        this.limparListaOperacao();
+        this.limparCampos();
+       }, (error) => console.log(error));
       return;
     }
 
     if(this.listaOperacao.multiplicacao === 'multiplicacao'){
-      const operacao = {valor1: this.valor1, valor2: this.valor2, operacao: 'Multiplicação', resultado: this.valorOperacao}
-      this.aoTransferir.emit(operacao);
-      this.limparListaOperacao();
-      this.limparCampos();
+      const operacao: Operacao = { operacao: 'Soma', valor1: this.valor1, valor2: this.valor2, resultado: this.valorOperacao}
+      this.service.adicionar(operacao).subscribe((resultado) =>{
+        this.limparListaOperacao();
+        this.limparCampos();
+       }, (error) => console.log(error));;
       return;
     }
 
     if(this.listaOperacao.divisao === 'divisao'){
-      const operacao = {valor1: this.valor1, valor2: this.valor2, operacao: 'Divisão', resultado: this.valorOperacao}
-      this.aoTransferir.emit(operacao);
-      this.limparListaOperacao();
-      this.limparCampos();
+      const operacao: Operacao = { operacao: 'Soma', valor1: this.valor1, valor2: this.valor2, resultado: this.valorOperacao}
+      this.service.adicionar(operacao).subscribe((resultado) =>{
+        this.limparListaOperacao();
+        this.limparCampos();
+       }, (error) => console.log(error));
       return;
     }
 
@@ -92,5 +106,10 @@ export class CalculadoraComponent implements OnInit {
     this.listaOperacao.subtracao = null;
     this.listaOperacao.divisao = null;
     this.listaOperacao.multiplicacao = null;
+  }
+
+  public excluirOperacao(){
+
+    this.getID.forEach( id => this.service.deletarResultado(id).subscribe());
   }
 }
