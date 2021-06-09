@@ -1,0 +1,22 @@
+<section class="container">
+  <h2 class="titulo">Resultados</h2>
+<table class="tabela">
+  <thead class="tabela__cabecalho">
+    <th class="tabela__cabecalho_conteudo">Operação</th>
+    <th class="tabela__cabecalho_conteudo">Valor 1</th>
+    <th class="tabela__cabecalho_conteudo">Valor 2</th>
+    <th class="tabela__cabecalho_conteudo">Resultado</th>
+  </thead>
+    <tbody *ngIf="transferencias?.length > 0; else listaVazia">
+      <tr class="tabela__linha"*ngFor="let item of transferencias">
+        <td class="tabela__conteudo">{{item.operacao}}</td>
+        <td class="tabela__conteudo">{{item.valor1}}</td>
+        <td class="tabela__conteudo">{{item.valor2}}</td>
+        <td class="tabela__conteudo">{{item.resultado}}</td>
+      </tr>
+   </tbody>
+  </table>
+  <ng-template #listaVazia>
+     <p>Nenhuma Operação Feita</p>
+  </ng-template>
+  </section>
