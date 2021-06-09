@@ -16,7 +16,7 @@ export class CalculadoraComponent implements OnInit {
 
   public valorOperacao: number;
 
-  public listaOperacao = {soma:null, subtracao: null, multiplicacao: null, divisao: null}
+  public listaOperacao = {soma: null, subtracao: null, multiplicacao: null, divisao: null};
 
   getID: any[];
 
@@ -26,14 +26,14 @@ export class CalculadoraComponent implements OnInit {
 
 
   ngOnInit() {
-    this.service.getTodas().subscribe((operacao: Operacao[]) =>{
+    this.service.getTodas().subscribe((operacao: Operacao[]) => {
       this.getID = operacao.map(operacao => operacao.id);
-    })
+    });
   }
 
   public transferir(): void{
 
-    if(this.listaOperacao.soma === 'soma'){
+    if(this.listaOperacao.soma === 'soma') {
        const operacao: Operacao = { operacao: 'Soma', valor1: this.valor1, valor2: this.valor2, resultado: this.valorOperacao}
        this.service.adicionar(operacao).subscribe((resultado) =>{
         this.limparListaOperacao();
@@ -43,8 +43,8 @@ export class CalculadoraComponent implements OnInit {
        return;
       }
 
-    if(this.listaOperacao.subtracao === 'subtracao'){
-      const operacao: Operacao = { operacao: 'Soma', valor1: this.valor1, valor2: this.valor2, resultado: this.valorOperacao}
+    if(this.listaOperacao.subtracao === 'subtracao') {
+      const operacao: Operacao = { operacao: 'Subtração', valor1: this.valor1, valor2: this.valor2, resultado: this.valorOperacao}
       this.service.adicionar(operacao).subscribe((resultado) =>{
         this.limparListaOperacao();
         this.limparCampos();
@@ -52,17 +52,17 @@ export class CalculadoraComponent implements OnInit {
       return;
     }
 
-    if(this.listaOperacao.multiplicacao === 'multiplicacao'){
-      const operacao: Operacao = { operacao: 'Soma', valor1: this.valor1, valor2: this.valor2, resultado: this.valorOperacao}
+    if(this.listaOperacao.multiplicacao === 'multiplicacao') {
+      const operacao: Operacao = { operacao: 'Multiplicação', valor1: this.valor1, valor2: this.valor2, resultado: this.valorOperacao}
       this.service.adicionar(operacao).subscribe((resultado) =>{
         this.limparListaOperacao();
         this.limparCampos();
-       }, (error) => console.log(error));;
+       }, (error) => console.log(error));
       return;
     }
 
-    if(this.listaOperacao.divisao === 'divisao'){
-      const operacao: Operacao = { operacao: 'Soma', valor1: this.valor1, valor2: this.valor2, resultado: this.valorOperacao}
+    if(this.listaOperacao.divisao === 'divisao') {
+      const operacao: Operacao = { operacao: 'Divisão', valor1: this.valor1, valor2: this.valor2, resultado: this.valorOperacao}
       this.service.adicionar(operacao).subscribe((resultado) =>{
         this.limparListaOperacao();
         this.limparCampos();
@@ -72,7 +72,7 @@ export class CalculadoraComponent implements OnInit {
 
   }
 
-  public somar(): number{
+  public somar(): number {
     const soma = this.valor1 + this.valor2;
     this.listaOperacao.soma = 'soma';
     return this.valorOperacao = soma;

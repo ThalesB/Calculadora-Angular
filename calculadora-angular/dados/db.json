@@ -2,10 +2,31 @@
   "operacoes": [
     {
       "operacao": "Soma",
-      "valor1": 30,
-      "valor2": 40,
-      "resultado": 70,
+      "valor1": 100,
+      "valor2": 100,
+      "resultado": 200,
       "id": 1
+    },
+    {
+      "operacao": "Subtração",
+      "valor1": 60,
+      "valor2": 30,
+      "resultado": 30,
+      "id": 2
+    },
+    {
+      "operacao": "Multiplicação",
+      "valor1": 10,
+      "valor2": 10,
+      "resultado": 100,
+      "id": 3
+    },
+    {
+      "operacao": "Divisão",
+      "valor1": 100,
+      "valor2": 2,
+      "resultado": 50,
+      "id": 4
     }
   ]
 }
