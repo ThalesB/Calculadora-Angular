@@ -1,25 +1,3 @@
 {
-  "operacoes": [
-    {
-      "operacao": "Soma",
-      "valor1": 100,
-      "valor2": 100,
-      "resultado": 200,
-      "id": 1
-    },
-    {
-      "operacao": "Multiplicação",
-      "valor1": 200,
-      "valor2": 200,
-      "resultado": 40000,
-      "id": 2
-    },
-    {
-      "operacao": "Divisão",
-      "valor1": 100,
-      "valor2": 100,
-      "resultado": 1,
-      "id": 3
-    }
-  ]
+  "operacoes": []
 }

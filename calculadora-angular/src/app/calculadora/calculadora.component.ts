@@ -115,6 +115,7 @@ export class CalculadoraComponent implements OnInit {
 
     this.getID.forEach( id => this.service.deletarResultado(id).subscribe());
     location.reload();
+    window.alert("Você Limpou o Histórico");
   }
 
   public atualizarHistorico(){
