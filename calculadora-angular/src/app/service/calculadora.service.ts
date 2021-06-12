@@ -33,8 +33,4 @@ getTodas(): Observable<Operacao[]> {
    return this.httpClient.delete<Operacao>(`http://localhost:3000/operacoes/${id}`);
  }
 
- get transferencias() {
-   return this.listaTransferencia;
- }
-
 }

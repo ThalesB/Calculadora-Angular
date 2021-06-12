@@ -9,8 +9,6 @@ import { CalculadoraService } from '../service/calculadora.service';
 })
 export class CalculadoraComponent implements OnInit {
 
-  @Output() aoTransferir = new EventEmitter<any>();
-
   public valor1: number;
   public valor2: number;
 
@@ -29,6 +27,7 @@ export class CalculadoraComponent implements OnInit {
     this.service.getTodas().subscribe((operacao: Operacao[]) => {
       this.getID = operacao.map(operacao => operacao.id);
     });
+    this.limparCampos();
   }
 
   public transferir(): void{
@@ -38,6 +37,7 @@ export class CalculadoraComponent implements OnInit {
        this.service.adicionar(operacao).subscribe((resultado) =>{
         this.limparListaOperacao();
         this.limparCampos();
+        location.reload();
        }, (error) => console.log(error));
 
        return;
@@ -48,6 +48,7 @@ export class CalculadoraComponent implements OnInit {
       this.service.adicionar(operacao).subscribe((resultado) =>{
         this.limparListaOperacao();
         this.limparCampos();
+        location.reload();
        }, (error) => console.log(error));
       return;
     }
@@ -57,6 +58,7 @@ export class CalculadoraComponent implements OnInit {
       this.service.adicionar(operacao).subscribe((resultado) =>{
         this.limparListaOperacao();
         this.limparCampos();
+        location.reload();
        }, (error) => console.log(error));
       return;
     }
@@ -66,6 +68,7 @@ export class CalculadoraComponent implements OnInit {
       this.service.adicionar(operacao).subscribe((resultado) =>{
         this.limparListaOperacao();
         this.limparCampos();
+        location.reload();
        }, (error) => console.log(error));
       return;
     }
@@ -111,5 +114,12 @@ export class CalculadoraComponent implements OnInit {
   public excluirOperacao(){
 
     this.getID.forEach( id => this.service.deletarResultado(id).subscribe());
+    location.reload();
   }
+
+  public atualizarHistorico(){
+
+
+  }
+
 }
