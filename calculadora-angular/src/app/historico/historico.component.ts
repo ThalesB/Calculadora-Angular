@@ -14,9 +14,9 @@ export class HistoricoComponent implements OnInit {
   constructor(private service: CalculadoraService) { }
 
   ngOnInit() {
-    this.service.getTodas().subscribe((operacao: Operacao[]) =>{
+    this.service.getTodas().subscribe((operacao: Operacao[]) => {
       this.transferencias = operacao;
-    })
+    });
 
   }
 

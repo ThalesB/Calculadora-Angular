@@ -18,7 +18,7 @@ export class CalculadoraComponent implements OnInit {
 
   getID: any[];
 
- constructor(private service: CalculadoraService){
+ constructor(private service: CalculadoraService) {
 
 }
 
@@ -30,11 +30,11 @@ export class CalculadoraComponent implements OnInit {
     this.limparCampos();
   }
 
-  public transferir(): void{
+  public transferir(): void {
 
-    if(this.listaOperacao.soma === 'soma') {
+    if (this.listaOperacao.soma === 'soma') {
        const operacao: Operacao = { operacao: 'Soma', valor1: this.valor1, valor2: this.valor2, resultado: this.valorOperacao}
-       this.service.adicionar(operacao).subscribe((resultado) =>{
+       this.service.adicionar(operacao).subscribe((resultado) => {
         this.limparListaOperacao();
         this.limparCampos();
         location.reload();
@@ -43,7 +43,7 @@ export class CalculadoraComponent implements OnInit {
        return;
       }
 
-    if(this.listaOperacao.subtracao === 'subtracao') {
+    if (this.listaOperacao.subtracao === 'subtracao') {
       const operacao: Operacao = { operacao: 'Subtração', valor1: this.valor1, valor2: this.valor2, resultado: this.valorOperacao}
       this.service.adicionar(operacao).subscribe((resultado) =>{
         this.limparListaOperacao();
@@ -53,7 +53,7 @@ export class CalculadoraComponent implements OnInit {
       return;
     }
 
-    if(this.listaOperacao.multiplicacao === 'multiplicacao') {
+    if (this.listaOperacao.multiplicacao === 'multiplicacao') {
       const operacao: Operacao = { operacao: 'Multiplicação', valor1: this.valor1, valor2: this.valor2, resultado: this.valorOperacao}
       this.service.adicionar(operacao).subscribe((resultado) =>{
         this.limparListaOperacao();
@@ -63,7 +63,7 @@ export class CalculadoraComponent implements OnInit {
       return;
     }
 
-    if(this.listaOperacao.divisao === 'divisao') {
+    if (this.listaOperacao.divisao === 'divisao') {
       const operacao: Operacao = { operacao: 'Divisão', valor1: this.valor1, valor2: this.valor2, resultado: this.valorOperacao}
       this.service.adicionar(operacao).subscribe((resultado) =>{
         this.limparListaOperacao();
@@ -81,7 +81,7 @@ export class CalculadoraComponent implements OnInit {
     return this.valorOperacao = soma;
   }
 
-  public subtrair(): number{
+  public subtrair(): number {
     const subtracao = this.valor1 - this.valor2;
     this.listaOperacao.subtracao = 'subtracao';
     return this.valorOperacao = subtracao;
